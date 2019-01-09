@@ -12,7 +12,7 @@ class TimezoneCard extends React.Component {
         return (
             <Grid item md={3}>
                 <div>
-                        <p>{time.location}</p>
+                        <h2>{time.location}</h2>
                         <p>{time.time}</p>
                     <CardActions>
                         <Button variant="outlined" size="small" color="primary">Edit</Button>

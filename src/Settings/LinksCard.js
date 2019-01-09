@@ -9,7 +9,7 @@ class LinksCard extends React.Component {
         return (
             <Grid item md={3}>
                 <div>
-                        <p>{link.title}</p>
+                        <h2>{link.title}</h2>
                         <p>{link.url}</p>
                     <CardActions>
                         <Button variant="outlined" size="small" color="primary">Edit</Button>
