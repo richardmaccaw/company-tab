@@ -1,8 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+
 import { withStyles } from '@material-ui/core/styles'
 import { Button, Avatar } from '@material-ui/core'
 import firebase from 'firebase'
 
+const link = {
+    color: 'grey',
+}
 
 const styles = {
     button: {
@@ -26,26 +31,25 @@ const Nav = (props) => {
     const { classes } = props
         return (
             <div>
-                    {firebase.auth().currentUser &&
-                    <div className='nav'>
-                        <div className='navLinks'>
-                            <a href='#'>home</a>
-                            <a href="#">announcements</a>
-                            <a href="#">settings</a>
-                        </div>
-                        <div className='navButton'>
-                            <Avatar 
-                                alt="profile picture" 
-                                src={firebase.auth().currentUser.photoURL} 
-                                className={classes.bigAvatar}>
-                            </Avatar>
-                            <Button 
-                                className={classes.button}
-                                onClick={() => firebase.auth().signOut()}>Log out
-                            </Button>
-                        </div>
+                <div className='nav'>
+                    <div className='navLinks'>
+                        <NavLink to ='/' exact style={link} activeStyle={{color: 'purple'}}>home</NavLink>
+                        <NavLink to ='/announcements' exact style={link} activeStyle={{color: 'purple'}}>announcements</NavLink>
+                        <NavLink to ='/settings' exact style={link} activeStyle={{color: 'purple'}}>settings</NavLink>
                     </div>
-                    }
+                    <div className='navButton'>
+                        <Avatar 
+                            alt="profile picture" 
+                            src={firebase.auth().currentUser.photoURL} 
+                            className={classes.bigAvatar}>
+                        </Avatar>
+                        <Button 
+                            className={classes.button}
+                            onClick={() => firebase.auth().signOut()}>Log out
+                        </Button>
+                    </div>
+                </div>
+                    
             </div>
         ) 
 }

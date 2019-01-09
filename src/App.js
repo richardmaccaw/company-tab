@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Home from './routes/home'
-import Nav from './components/Nav'
+import Home from './routes/Home'
+import LandingPage from './components/LandingPage'
 import './App.css';
 
-import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase'
-import { Route, withRouter, Switch } from "react-router-dom"
+import { Route, Link, Switch } from "react-router-dom"
 
 
 const config = {
@@ -23,16 +22,6 @@ class App extends Component {
     user: []
   }
 
-  uiConfig = {
-    signInFlow: "popup",
-    signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID
-    ],
-    callbacks: {
-      signInSuccessWithAuthResult: () => false
-    }
-  }
-
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({
@@ -45,8 +34,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav></Nav>
-        {this.state.isSignedIn ? <Home></Home> : <StyledFirebaseAuth uiConfig = {this.uiConfig} firebaseAuth = {firebase.auth()}/>}
+        <Switch>
+          <Route exact path='/' component={this.state.isSignedIn ? Home : LandingPage} />
+          <Route path='/announcements' component={() => <h1>Announcements</h1>} />
+          <Route path='/settings' component={() => <h1>Settings</h1>} />
+          <Route component={() => <h1>404 - page not found</h1>} />
+        </Switch>
       </div>
     )
   }
