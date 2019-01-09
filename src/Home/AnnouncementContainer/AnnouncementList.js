@@ -1,6 +1,6 @@
 import React from 'react'
 import AnnouncementCard from './AnnouncementCard'
-import { json } from '../seed'
+import { json } from '../../seed'
 
 
 const AnnouncementList = (props) => {

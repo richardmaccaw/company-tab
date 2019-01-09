@@ -3,6 +3,12 @@
   margin: auto;
 }
 
+.container {
+  display: flex;
+}
+
+
+
 .nav {
   display: flex;
   align-items: center;

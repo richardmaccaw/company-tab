@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import { Button, Avatar } from '@material-ui/core'
@@ -30,6 +30,7 @@ const styles = {
 const Nav = (props) => {
     const { classes } = props
         return (
+            
             <div>
                 <div className='nav'>
                     <div className='navLinks'>

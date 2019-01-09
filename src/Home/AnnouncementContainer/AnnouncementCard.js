@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Chip, Typography } from '@material-ui/core';
+import { Grid, Chip } from '@material-ui/core';
 
 const AnnouncementCard = (props) => {
 
@@ -11,10 +11,10 @@ const AnnouncementCard = (props) => {
                     <Grid item xs={10}>
                         <h1>{props.announcement.title} </h1>
                     </Grid>
-                    <Grid item xs={2}>
-                        <Chip variant='outlined' color='primary' label='new'></Chip>
+                    <Grid item xs={1}>
+                        <Chip variant='outlined' size='small' color='secondary' label='new'></Chip>
                     </Grid>
-                    <Grid item xs={12}>
+                    <Grid item xs={10}>
                         <p>{props.announcement.description}</p>
                         <p>{props.announcement.date}</p>
                     </Grid>

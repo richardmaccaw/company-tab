@@ -1,6 +1,6 @@
 import React from 'react'
 import LinkCard from './LinkCard'
-import { linkList } from '../seed'
+import { linkList } from '../../seed'
 
 
 const LinksList = (props) => {

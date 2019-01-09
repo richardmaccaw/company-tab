@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import Nav from './components/Nav'
 import Home from './routes/Home'
 import LandingPage from './components/LandingPage'
+import Announcements from './routes/Announcements'
 import './App.css';
+import { json } from './seed'
+
 
 import firebase from 'firebase'
-import { Route, Link, Switch } from "react-router-dom"
+import { Route, Switch } from "react-router-dom"
 
 
 const config = {
@@ -19,7 +23,8 @@ class App extends Component {
 
   state = {
     isSignedIn: false,
-    user: []
+    user: [],
+    announcements: json.announcements
   }
 
   componentDidMount = () => {
@@ -34,9 +39,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {this.state.isSignedIn && <Nav></Nav>}
         <Switch>
           <Route exact path='/' component={this.state.isSignedIn ? Home : LandingPage} />
-          <Route path='/announcements' component={() => <h1>Announcements</h1>} />
+          <Route path='/announcements' component={routerProps => 
+              <Announcements 
+                isSignedIn={this.state.isSignedIn}
+                {...routerProps}
+              />
+            } 
+          />
           <Route path='/settings' component={() => <h1>Settings</h1>} />
           <Route component={() => <h1>404 - page not found</h1>} />
         </Switch>
@@ -46,3 +58,4 @@ class App extends Component {
 }
 
 export default App
+

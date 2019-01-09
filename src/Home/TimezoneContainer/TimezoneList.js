@@ -1,6 +1,6 @@
 import React from 'react';
 import TimezoneCard from './TimezoneCard'
-import { times } from '../seed'
+import { times } from '../../seed'
 
 const TimezoneList = (props) => {
     return(
