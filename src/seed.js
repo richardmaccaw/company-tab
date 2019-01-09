@@ -35,4 +35,24 @@ const times = {
 
 }
 
-export { json, times }
+const linkList = {
+    links: [{
+            title: 'Confluence',
+            url: 'https://www.ourcompanyconculence.com'
+        }, {
+            title: 'Slack',
+            url: 'https://www.ourcompanyslack.com'
+        },
+        {
+            title: 'Uber eats account',
+            url: 'https://www.ourcompanyubereates.com'
+        },
+    ]
+
+}
+
+export {
+    json,
+    times,
+    linkList
+}

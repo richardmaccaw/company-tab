@@ -5,8 +5,24 @@
 
 .nav {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
   padding-bottom: 5%;
+}
+
+.navLinks {
+  display: flex;
+}
+
+
+.navLinks a {
+  color: grey;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navButton {
+  display: flex;
 }
 
 .announcementCard {

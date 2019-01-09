@@ -1,27 +1,20 @@
 import React, { Component } from 'react';
+import Home from './routes/home'
 import Nav from './components/Nav'
-import AnnouncementList from './AnnouncementContainer/AnnouncementList'
-import TimezoneList from './TimezoneContainer/TimezoneList'
-
 import './App.css';
-import Grid from '@material-ui/core/Grid';
 
-
-
-import firebase from 'firebase'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase'
 import { Route, withRouter, Switch } from "react-router-dom"
 
 
-  const config = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: "companytab-227916.firebaseapp.com",
-    projectId: "companytab-227916",
-  }
+const config = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: "companytab-227916.firebaseapp.com",
+  projectId: "companytab-227916",
+}
 
-  firebase.initializeApp(config);
-
-
+firebase.initializeApp(config);
 
 class App extends Component {
 
@@ -36,7 +29,7 @@ class App extends Component {
       firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],
     callbacks: {
-      signInSuccess: () => false
+      signInSuccessWithAuthResult: () => false
     }
   }
 
@@ -53,25 +46,9 @@ class App extends Component {
     return (
       <div className="App">
         <Nav></Nav>
-        {this.state.isSignedIn ?
-          <>
-            <Grid container>
-              <Grid item xs={8}>
-                <AnnouncementList></AnnouncementList>
-              </Grid>
-              <Grid item xs ={4}>
-                <TimezoneList></TimezoneList>
-              </Grid>
-            </Grid>
-            
-          </>
-          :
-          <StyledFirebaseAuth 
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />}
+        {this.state.isSignedIn ? <Home></Home> : <StyledFirebaseAuth uiConfig = {this.uiConfig} firebaseAuth = {firebase.auth()}/>}
       </div>
-    );
+    )
   }
 }
 

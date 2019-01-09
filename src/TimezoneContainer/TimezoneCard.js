@@ -1,6 +1,4 @@
 import React from 'react'
-import moment from 'moment-timezone';
-
 
 const TimezoneCard = (props) => {
     return (
