@@ -31,6 +31,12 @@ const times = {
     }, {
         location: 'Madrid',
         time: moment().tz('Europe/Madrid').format('h:mma')
+    }, {
+        location: 'Madrid',
+        time: moment().tz('Europe/Madrid').format('h:mma')
+    }, {
+        location: 'Madrid',
+        time: moment().tz('Europe/Madrid').format('h:mma')
     }]
 
 }

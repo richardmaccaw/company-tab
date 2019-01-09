@@ -3,6 +3,7 @@ import Nav from './components/Nav'
 import Home from './routes/Home'
 import LandingPage from './components/LandingPage'
 import Announcements from './routes/Announcements'
+import Settings from './routes/Settings'
 import './App.css';
 import { json } from './seed'
 
@@ -49,7 +50,13 @@ class App extends Component {
               />
             } 
           />
-          <Route path='/settings' component={() => <h1>Settings</h1>} />
+          <Route path='/settings' component={routerProps => 
+              <Settings 
+                isSignedIn={this.state.isSignedIn}
+                {...routerProps}
+              />
+            } 
+          />
           <Route component={() => <h1>404 - page not found</h1>} />
         </Switch>
       </div>
