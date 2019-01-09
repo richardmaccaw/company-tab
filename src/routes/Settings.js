@@ -1,7 +1,10 @@
 import React from 'react'
-import { json } from '../seed'
+import LinksList from '../Settings/LinksList'
+import TimezoneList from '../Settings/TimezoneList'
 
-import { Button } from '@material-ui/core';
+import { linkList, times } from '../seed'
+
+import { Grid } from '@material-ui/core';
 
 class Settings extends React.Component {
     state = {
@@ -16,9 +19,14 @@ class Settings extends React.Component {
 
     render () {
         return (
-            <>
-                <p>hi there</p>
-            </>
+            <Grid container justify="space-between" direction='column' spacing={24}>
+                <Grid item>
+                    <TimezoneList times={times.timezones}></TimezoneList>
+                </Grid>
+                <Grid item >
+                    <LinksList links={linkList.links}></LinksList>
+                </Grid>
+            </Grid>
         )
     }
 }
