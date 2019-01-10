@@ -1,13 +1,9 @@
 import React from 'react'
-import { json } from '../seed'
 import AnnouncementList from '../Announcements/AnnouncementList'
 
 import { Button } from '@material-ui/core';
 
 class Announcements extends React.Component {
-    state = {
-        announcements: []
-    }
 
     componentDidMount () {
         const { isSignedIn, history } = this.props
@@ -29,7 +25,7 @@ class Announcements extends React.Component {
             <>
                 <Button variant='contained' color='primary'>New Announcement</Button>
                 <AnnouncementList
-                    announcements={json.announcements}
+                    announcements={this.props.announcements}
                     handleEdit={this.handleEdit}
                     handleDelete={this.handleDelete}
                 ></AnnouncementList>

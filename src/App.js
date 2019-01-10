@@ -9,7 +9,7 @@ import { json } from './seed'
 
 
 import firebase from 'firebase'
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, Redirect } from "react-router-dom"
 
 
 const config = {
@@ -25,7 +25,7 @@ class App extends Component {
   state = {
     isSignedIn: false,
     user: [],
-    announcements: json.announcements
+    announcements: []
   }
 
   componentDidMount = () => {
@@ -35,24 +35,44 @@ class App extends Component {
         user
       })
     })
+    this.fetchAnnouncements()
+  }
+
+  fetchAnnouncements = () => {
+    this.setState({
+      announcements: json.announcements
+    })
   }
 
   render() {
+    const { isSignedIn, announcements } = this.state
     return (
       <div className="App">
-        {this.state.isSignedIn && <Nav></Nav>}
+        {isSignedIn && <Nav></Nav>}
         <Switch>
-          <Route exact path='/' component={this.state.isSignedIn ? Home : LandingPage} />
+          <Route
+            exact path='/'
+            render={renderProps => !isSignedIn ? 
+              (<LandingPage {...renderProps}/>)
+              : 
+                (<Redirect to={{pathname: '/home'}}/>)
+            }
+          />
+          <Route 
+            path='/home'
+            component={routerProps => <Home announcements={announcements} isSignedIn={isSignedIn} {...routerProps}/>}
+          />
           <Route path='/announcements' component={routerProps => 
               <Announcements 
-                isSignedIn={this.state.isSignedIn}
+                isSignedIn={isSignedIn}
+                announcements={announcements}
                 {...routerProps}
               />
             } 
           />
           <Route path='/settings' component={routerProps => 
               <Settings 
-                isSignedIn={this.state.isSignedIn}
+                isSignedIn={isSignedIn}
                 {...routerProps}
               />
             } 
