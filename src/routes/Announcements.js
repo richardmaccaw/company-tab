@@ -16,11 +16,23 @@ class Announcements extends React.Component {
         }
     }
 
+    handleEdit = () => {
+        console.log('handle edit')
+    }
+
+    handleDelete = () => {
+        console.log('handle delete')
+    }
+
     render () {
         return (
             <>
                 <Button variant='contained' color='primary'>New Announcement</Button>
-                <AnnouncementList announcements={json.announcements}></AnnouncementList>
+                <AnnouncementList
+                    announcements={json.announcements}
+                    handleEdit={this.handleEdit}
+                    handleDelete={this.handleDelete}
+                ></AnnouncementList>
             </>
         )
     }
