@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
-import { Button, Avatar } from '@material-ui/core'
+import { Avatar } from '@material-ui/core'
 import firebase from 'firebase'
 
 const link = {
@@ -27,14 +27,16 @@ const styles = {
 
 };
 
-const Nav = (props) => {
-    const { classes } = props
+
+class Nav extends React.Component {
+    render () {
+        const { classes } = this.props
         return (
             
             <div>
                 <div className='nav'>
                     <div className='navLinks'>
-                        <NavLink to ='/' exact style={link} activeStyle={{color: 'purple'}}>home</NavLink>
+                        <NavLink to ='/home' exact style={link} activeStyle={{color: 'purple'}}>home</NavLink>
                         <NavLink to ='/announcements' exact style={link} activeStyle={{color: 'purple'}}>announcements</NavLink>
                         <NavLink to ='/settings' exact style={link} activeStyle={{color: 'purple'}}>settings</NavLink>
                     </div>
@@ -44,15 +46,15 @@ const Nav = (props) => {
                             src={firebase.auth().currentUser.photoURL} 
                             className={classes.bigAvatar}>
                         </Avatar>
-                        <Button 
-                            className={classes.button}
-                            onClick={() => firebase.auth().signOut()}>Log out
-                        </Button>
+                    </div>
+                    <div className='navLinks'>
+                        <NavLink to='/' exact style={link}> <div onClick={() => firebase.auth().signOut()}>log out</div> </NavLink>
                     </div>
                 </div>
                     
             </div>
         ) 
+    }
 }
 
 export default withStyles(styles)(Nav)
