@@ -6,7 +6,6 @@ import LandingPage from './components/LandingPage'
 import Announcements from './routes/Announcements'
 import Settings from './routes/Settings'
 import './App.css';
-import { json } from './seed'
 
 
 import firebase from 'firebase'
@@ -25,7 +24,7 @@ class App extends Component {
 
   state = {
     isSignedIn: false,
-    serverAnnouncements: []
+    announcements: [],
   }
 
   componentDidMount = () => {
@@ -39,7 +38,7 @@ class App extends Component {
 
   fetchAnnouncements = () => {
     API.getUser()
-      .then( serverUser => this.setState({ serverAnnouncements: serverUser.company.announcements })
+      .then( serverUser => this.setState({ announcements: serverUser.company.announcements })
       )
   }
 
@@ -62,7 +61,7 @@ class App extends Component {
             path='/home'
             component={routerProps =>
               <Home 
-                announcements={this.state.serverAnnouncements}
+                announcements={announcements}
                 isSignedIn={isSignedIn}
                 {...routerProps}/>}
           />
