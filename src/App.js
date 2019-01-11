@@ -44,6 +44,10 @@ class App extends Component {
     })
   }
 
+  handleEditAnnouncement = (id) => {
+    
+  }
+
   render() {
     const { isSignedIn, announcements } = this.state
     return (
@@ -60,9 +64,15 @@ class App extends Component {
           />
           <Route 
             path='/home'
-            component={routerProps => <Home announcements={announcements} isSignedIn={isSignedIn} {...routerProps}/>}
+            component={routerProps =>
+              <Home 
+                announcements={announcements}
+                isSignedIn={isSignedIn}
+                {...routerProps}/>}
           />
-          <Route path='/announcements' component={routerProps => 
+          <Route 
+            path='/announcements' 
+            component={routerProps => 
               <Announcements 
                 isSignedIn={isSignedIn}
                 announcements={announcements}
@@ -70,7 +80,9 @@ class App extends Component {
               />
             } 
           />
-          <Route path='/settings' component={routerProps => 
+          <Route 
+            path='/settings'
+            component={routerProps => 
               <Settings 
                 isSignedIn={isSignedIn}
                 {...routerProps}

@@ -6,6 +6,8 @@ class AnnouncementCard extends React.Component {
     state = {
         checked: false,
         dialogOpen: false,
+        title: '',
+        description: ''
     }
 
     handleDialogClose = () => {
@@ -19,6 +21,14 @@ class AnnouncementCard extends React.Component {
             dialogOpen: true
         })
     }
+
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value
+        })
+    }
+
+
 
     render () {
         const { announcement, handleEdit, handleDelete } = this.props
@@ -49,21 +59,23 @@ class AnnouncementCard extends React.Component {
                 <DialogContent>
                     <TextField
                         multiline
+                        onChange={this.handleChange('title')}
                         rows="1"
-                        placeholder={announcement.title}
+                        value={announcement.title}
                         autoFocus
                         margin="dense"
-                        id="title"
+                        name="title"
                         type="text"
                         fullWidth
                     />
                     <TextField
+                        onChange={this.handleChange('description')}
                         multiline
                         rows="5"
                         InputLabelProps={{shrink: true}}
-                        placeholder={announcement.description}
+                        value={announcement.description}
                         margin="dense"
-                        id="description"
+                        name="description"
                         type="text"
                         fullWidth
                     />

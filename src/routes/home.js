@@ -16,6 +16,7 @@ class Home extends React.Component {
     }
 
     render () {
+        const { announcements } = this.props
         return <>
             <Grid 
                 container
@@ -23,7 +24,7 @@ class Home extends React.Component {
                 justify="space-between"
             >
                 <Grid item xs={8}>
-                    <AnnouncementList></AnnouncementList>
+                    <AnnouncementList announcements={announcements}></AnnouncementList>
                 </Grid>
                 <Grid item xs={2} >
                     <Grid spacing={32} container direction='column'>
