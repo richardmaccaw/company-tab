@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardActions, Button, Grid, Switch, FormControlLabel, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@material-ui/core'
+import { CardActions, Button, Grid, Switch, FormControlLabel, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core'
 
 class AnnouncementCard extends React.Component {
 
@@ -31,7 +31,7 @@ class AnnouncementCard extends React.Component {
 
 
     render () {
-        const { announcement, handleEdit, handleDelete } = this.props
+        const { announcement, handleDelete } = this.props
         return (
             <>
             <Grid item md={5}>

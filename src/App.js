@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from './API'
 import Nav from './components/Nav'
 import Home from './routes/Home'
 import LandingPage from './components/LandingPage'
@@ -24,29 +25,24 @@ class App extends Component {
 
   state = {
     isSignedIn: false,
-    user: [],
-    announcements: []
+    serverAnnouncements: []
   }
 
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({
         isSignedIn: !!user,
-        user
       })
     })
     this.fetchAnnouncements()
   }
 
   fetchAnnouncements = () => {
-    this.setState({
-      announcements: json.announcements
-    })
+    API.getUser()
+      .then( serverUser => this.setState({ serverAnnouncements: serverUser.company.announcements })
+      )
   }
 
-  handleEditAnnouncement = (id) => {
-    
-  }
 
   render() {
     const { isSignedIn, announcements } = this.state
@@ -66,7 +62,7 @@ class App extends Component {
             path='/home'
             component={routerProps =>
               <Home 
-                announcements={announcements}
+                announcements={this.state.serverAnnouncements}
                 isSignedIn={isSignedIn}
                 {...routerProps}/>}
           />

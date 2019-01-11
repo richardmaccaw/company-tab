@@ -1,5 +1,5 @@
 import React from 'react'
-import { CardActions, Button, Grid, Switch, FormControlLabel } from '@material-ui/core'
+import { CardActions, Button, Grid } from '@material-ui/core'
 
 class TimezoneCard extends React.Component {
 
