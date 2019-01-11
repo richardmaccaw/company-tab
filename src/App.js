@@ -24,24 +24,32 @@ class App extends Component {
 
   state = {
     isSignedIn: false,
-    announcements: [],
+    user: [],
+    announcements: []
   }
 
   componentDidMount = () => {
-    firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        isSignedIn: !!user,
+   this.authUser().then(user => {
+     this.setState({user, isSignedIn: true})
+    }).then(this.fetchRailsUser)
+  }
+
+  authUser = () => {
+    return new Promise(function (resolve, reject) {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          resolve(user)
+        } else {
+          reject(console.log('user not logged in'))
+        }
       })
     })
-    this.fetchAnnouncements()
   }
 
-  fetchAnnouncements = () => {
-    API.getUser()
-      .then( serverUser => this.setState({ announcements: serverUser.company.announcements })
-      )
+  fetchRailsUser = () => {
+    API.getRailsUser(this.state.user.uid)
+      .then(data => this.setState({announcements: data.announcements}))
   }
-
 
   render() {
     const { isSignedIn, announcements } = this.state
@@ -57,8 +65,9 @@ class App extends Component {
                 (<Redirect to={{pathname: '/home'}}/>)
             }
           />
+          
           <Route 
-            path='/home'
+            exact path='/home'
             component={routerProps =>
               <Home 
                 announcements={announcements}

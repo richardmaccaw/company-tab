@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { Redirect } from "react-router-dom"
+
+
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase'
 
@@ -9,7 +12,7 @@ const LandingPage = (props) => {
         signInFlow: "popup",
         signInOptions: [firebase.auth.GoogleAuthProvider.PROVIDER_ID],
           callbacks: {
-            signInSuccessWithAuthResult: () => false
+            signInSuccessWithAuthResult: () => window.location.assign('/home')
         }
       }
     return (

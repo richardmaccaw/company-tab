@@ -1,8 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
-import { Avatar } from '@material-ui/core'
+import { Avatar, Button } from '@material-ui/core'
 import firebase from 'firebase'
 
 const link = {
@@ -47,9 +47,9 @@ class Nav extends React.Component {
                             className={classes.bigAvatar}>
                         </Avatar>
                     </div>
-                    <div className='navLinks'>
-                        <NavLink to='/' exact style={link}> <div onClick={() => firebase.auth().signOut()}>log out</div> </NavLink>
-                    </div>
+                    <div className='navLinks' >
+                        <button onClick={() => firebase.auth().signOut()}>Sign out</button>
+                    </div> 
                 </div>
                     
             </div>

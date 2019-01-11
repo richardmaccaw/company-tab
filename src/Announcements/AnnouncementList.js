@@ -8,6 +8,7 @@ const AnnouncementList = (props) => {
         <Grid container spacing={32} justify="space-between">
                 {props.announcements.map(announcement => 
                     <AnnouncementCard 
+                        key={announcement.id}
                         announcement={announcement}
                         handleEdit={props.handleEdit}
                         handleDelete={props.handleDelete}
