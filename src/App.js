@@ -66,7 +66,7 @@ class App extends Component {
       announcement.id === editedAnnouncement.id 
       ? {...announcement, 
           title: editedAnnouncement.title,
-          description: editedAnnouncement.title}
+          description: editedAnnouncement.description}
       : announcement)
       this.setState({announcements})
   }

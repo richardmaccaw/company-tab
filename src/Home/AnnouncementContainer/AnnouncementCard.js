@@ -1,4 +1,5 @@
 import React from 'react'
+import moment from 'moment-timezone';
 import { Grid, Chip } from '@material-ui/core';
 
 const AnnouncementCard = (props) => {
@@ -16,7 +17,7 @@ const AnnouncementCard = (props) => {
                     </Grid>
                     <Grid item xs={10}>
                         <p>{props.announcement.description}</p>
-                        <p>{props.announcement.date}</p>
+                        <p>{moment(props.announcement.date).fromNow()}</p>
                     </Grid>
                 </Grid>
             }
