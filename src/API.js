@@ -24,8 +24,9 @@ class API {
         }).then(resp => resp.json())
     }
 
-    static patchAnnouncement = (id, announcement) => {
-        return fetch(`http://localhost:3002/api/v1/announcements/${id}`, {
+    static patchAnnouncement = (announcement) => {
+        console.log(announcement)
+        return fetch(`http://localhost:3002/api/v1/announcements/${announcement.id}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(announcement)

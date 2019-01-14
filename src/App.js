@@ -57,8 +57,18 @@ class App extends Component {
   }
 
   deleteAnnouncement = (id) => {
-    const announcements = this.state.announcements.filter(announcement => announcement.id !== id)
+    const announcements = this.state.announcements.slice.filter(announcement => announcement.id !== id)
     this.setState({announcements})
+  }
+
+  editAnnouncement = (editedAnnouncement) => {
+    const announcements = this.state.announcements.map(announcement =>
+      announcement.id === editedAnnouncement.id 
+      ? {...announcement, 
+          title: editedAnnouncement.title,
+          description: editedAnnouncement.title}
+      : announcement)
+      this.setState({announcements})
   }
 
   render() {
@@ -93,6 +103,7 @@ class App extends Component {
                 announcements={announcements}
                 addAnnouncement={this.addAnnouncement}
                 deleteAnnouncement={this.deleteAnnouncement}
+                editAnnouncement={this.editAnnouncement}
                 {...routerProps}
               />
             } 

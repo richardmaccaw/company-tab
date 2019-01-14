@@ -28,9 +28,10 @@ class Announcements extends React.Component {
         )
     }
 
-    patchAnnouncement = (id, title, description) => {
-        const announcement = {title, description}
-        API.patchAnnouncement(id, announcement).then(console.log)
+    patchAnnouncement = (announcement) => {
+        API.patchAnnouncement(announcement).then(
+            resp => this.props.editAnnouncement(resp)
+        )
     }
 
 
