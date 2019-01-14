@@ -24,13 +24,14 @@ class App extends Component {
 
   state = {
     isSignedIn: false,
-    user: [],
+    firebaseUser: [],
+    serverUser: [],
     announcements: []
   }
 
   componentDidMount = () => {
-   this.authUser().then(user => {
-     this.setState({user, isSignedIn: true})
+   this.authUser().then(firebaseUser => {
+     this.setState({firebaseUser, isSignedIn: true})
     }).then(this.getUser)
   }
 
@@ -47,8 +48,8 @@ class App extends Component {
   }
 
   getUser = () => {
-    API.getUser(this.state.user.uid)
-      .then(data => this.setState({announcements: data.announcements}))
+    API.getUser(this.state.firebaseUser.uid)
+      .then(data => this.setState({serverUser: data, announcements: data.announcements}))
   }
 
   render() {
@@ -78,6 +79,7 @@ class App extends Component {
             path='/announcements' 
             component={routerProps => 
               <Announcements 
+                serverUser={this.state.serverUser}
                 isSignedIn={isSignedIn}
                 announcements={announcements}
                 {...routerProps}

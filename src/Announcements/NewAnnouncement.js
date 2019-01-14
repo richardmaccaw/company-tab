@@ -1,4 +1,6 @@
 import React from  'react'
+import moment from 'moment-timezone';
+
 import {
   Button,
   TextField,
@@ -7,6 +9,7 @@ import {
   DialogContent,
   DialogTitle
 } from '@material-ui/core'
+import API from '../API';
 
 class NewAnnouncement extends React.Component {
 
@@ -16,16 +19,29 @@ class NewAnnouncement extends React.Component {
         description: ''
     }
 
-    handleDialogClose = () => {
-        this.setState({
-            dialogOpen: false
-        })
-    }
-
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value
         })
+    }
+
+    postAnnouncement = () => {
+        const { title, description } = this.state
+        const { serverUser } = this.props
+        const announcement = {
+            title,
+            description,
+            published: true,
+            date: moment().format(),
+            company_id: serverUser.company.id
+        }
+        API.postAnnouncement(announcement).then(
+            () => this.props.toggleDialog()
+        )
+    }
+
+    deleteAnnouncement = () => {
+        
     }
     
     render () {
@@ -60,7 +76,7 @@ class NewAnnouncement extends React.Component {
               />
             </DialogContent>
             <DialogActions>
-                <Button onClick={''} color="primary">
+                <Button onClick={this.postAnnouncement} color="primary">
                 Submit
                 </Button>
                 <Button onClick={this.props.toggleDialog} color="secondary">

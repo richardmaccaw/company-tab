@@ -10,8 +10,8 @@ class API {
             .then(resp => resp.json())
     }
 
-    static postAnnouncement = (uid, announcement) => {
-        return fetch(`${this.announcementsURL}/${uid}`, {
+    static postAnnouncement = (announcement) => {
+        return fetch(`http://localhost:3002/api/v1/announcements`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(announcement)

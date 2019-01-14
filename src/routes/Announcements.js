@@ -8,8 +8,6 @@ class Announcements extends React.Component {
 
     state = {
         dialogOpen: false,
-        title: '',
-        description: ''
     }
 
     componentDidMount () {
@@ -28,7 +26,11 @@ class Announcements extends React.Component {
         return (
             <>
                 <Button onClick={this.toggleDialog} variant='contained' color='primary'>New Announcement</Button>
-                {this.state.dialogOpen && <NewAnnouncement toggleDialog={this.toggleDialog}></NewAnnouncement>}
+                {this.state.dialogOpen && 
+                    <NewAnnouncement 
+                        toggleDialog={this.toggleDialog}
+                        serverUser={this.props.serverUser}
+                    ></NewAnnouncement>}
                 <AnnouncementList
                     announcements={this.props.announcements}
                     handleEdit={this.handleEdit}
