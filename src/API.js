@@ -5,8 +5,16 @@ class API {
         this.announcementsURL = 'http://localhost:3002/api/v1/announcements'
     }
 
+    static find_or_create_user (uid, user) {
+        return fetch(`/api/v1/users/find_or_create_user/${uid}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(user)
+        }).then(resp => resp.json())
+    }
+
     static getUser (uid) {
-        return fetch(`${this.usersURL}/${uid}`)
+        return fetch(`http://localhost:3002/api/v1/users/${uid}`)
             .then(resp => resp.json())
     }
 

@@ -49,7 +49,7 @@ class App extends Component {
 
   getUser = () => {
     API.getUser(this.state.firebaseUser.uid)
-      .then(data => this.setState({serverUser: data, announcements: data.announcements}))
+      .then(data => data && this.setState({serverUser: data, announcements: data.announcements}))
   }
 
   addAnnouncement = (announcement) => {
@@ -57,7 +57,7 @@ class App extends Component {
   }
 
   deleteAnnouncement = (id) => {
-    const announcements = this.state.announcements.slice.filter(announcement => announcement.id !== id)
+    const announcements = this.state.announcements.slice().filter(announcement => announcement.id !== id)
     this.setState({announcements})
   }
 

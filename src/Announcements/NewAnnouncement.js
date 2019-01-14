@@ -36,7 +36,7 @@ class NewAnnouncement extends React.Component {
             company_id: serverUser.company.id
         }
         API.postAnnouncement(announcement).then(
-            (resp) => addAnnouncement(announcement)
+            (resp) => addAnnouncement(resp)
         )
     }
     
