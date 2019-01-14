@@ -40,18 +40,18 @@ class NewAnnouncement extends React.Component {
             <DialogContent>
               <TextField
                   multiline
+                  placeholder='Title'
                   onChange={this.handleChange('title')}
-                  rows="1"
                   autoFocus
                   margin="dense"
                   name="title"
                   type="text"
-                  fullWidth
+                  
               />
               <TextField
                   onChange={this.handleChange('description')}
+                  placeholder='Description'
                   multiline
-                  rows="5"
                   InputLabelProps={{shrink: true}}
                   margin="dense"
                   name="description"

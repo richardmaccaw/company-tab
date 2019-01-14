@@ -71,7 +71,6 @@ class AnnouncementCard extends React.Component {
                     <TextField
                         onChange={this.handleChange('description')}
                         multiline
-                        rows="5"
                         InputLabelProps={{shrink: true}}
                         value={announcement.description}
                         margin="dense"

@@ -31,7 +31,7 @@ class App extends Component {
   componentDidMount = () => {
    this.authUser().then(user => {
      this.setState({user, isSignedIn: true})
-    }).then(this.fetchRailsUser)
+    }).then(this.getUser)
   }
 
   authUser = () => {
@@ -46,8 +46,8 @@ class App extends Component {
     })
   }
 
-  fetchRailsUser = () => {
-    API.getRailsUser(this.state.user.uid)
+  getUser = () => {
+    API.getUser(this.state.user.uid)
       .then(data => this.setState({announcements: data.announcements}))
   }
 
