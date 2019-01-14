@@ -28,8 +28,6 @@ class AnnouncementCard extends React.Component {
         })
     }
 
-
-
     render () {
         const { announcement, handleDelete } = this.props
         return (
@@ -45,7 +43,7 @@ class AnnouncementCard extends React.Component {
                             label={announcement.published ? 'Published' : 'Not published'}
                         />
                         <Button onClick={this.handleDialogOpen} variant="outlined" size="small" color="primary">Edit</Button>
-                        <Button onClick={handleDelete} variant="outlined" size="small" color="secondary">Delete</Button>
+                        <Button onClick={() => handleDelete(announcement.id)} variant="outlined" size="small" color="secondary">Delete</Button>
                     </CardActions>
                 </div>
             </Grid>
@@ -61,7 +59,7 @@ class AnnouncementCard extends React.Component {
                         multiline
                         onChange={this.handleChange('title')}
                         rows="1"
-                        value={announcement.title}
+                        defaultValue={announcement.title}
                         autoFocus
                         margin="dense"
                         name="title"
@@ -72,7 +70,7 @@ class AnnouncementCard extends React.Component {
                         onChange={this.handleChange('description')}
                         multiline
                         InputLabelProps={{shrink: true}}
-                        value={announcement.description}
+                        defaultValue={announcement.description}
                         margin="dense"
                         name="description"
                         type="text"
@@ -80,7 +78,12 @@ class AnnouncementCard extends React.Component {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={this.handleDialogClose} color="primary">
+                    <Button onClick={
+                        () => this.props.handleEdit(
+                            announcement.id,
+                            this.state.title,
+                            this.state.description)
+                        } color="primary">
                     Submit
                     </Button>
                     <Button onClick={this.handleDialogClose} color="secondary">

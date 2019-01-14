@@ -27,7 +27,7 @@ class NewAnnouncement extends React.Component {
 
     postAnnouncement = () => {
         const { title, description } = this.state
-        const { serverUser } = this.props
+        const { serverUser, addAnnouncement } = this.props
         const announcement = {
             title,
             description,
@@ -36,12 +36,8 @@ class NewAnnouncement extends React.Component {
             company_id: serverUser.company.id
         }
         API.postAnnouncement(announcement).then(
-            () => this.props.toggleDialog()
+            (resp) => addAnnouncement(announcement)
         )
-    }
-
-    deleteAnnouncement = () => {
-        
     }
     
     render () {

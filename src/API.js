@@ -2,7 +2,7 @@ class API {
     static init () {
         this.baseURL = 'http://localhost:3002/api/v1'
         this.usersURL = this.baseURL + '/users'
-        this.announcementsURL = this.baseURL + '/announcements'
+        this.announcementsURL = 'http://localhost:3002/api/v1/announcements'
     }
 
     static getUser (uid) {
@@ -11,8 +11,22 @@ class API {
     }
 
     static postAnnouncement = (announcement) => {
-        return fetch(`http://localhost:3002/api/v1/announcements`, {
+        return fetch('http://localhost:3002/api/v1/announcements', {
             method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(announcement)
+        }).then(resp => resp.json())
+    }
+
+    static deleteAnnouncement = (id) => {
+        return fetch(`http://localhost:3002/api/v1/announcements/${id}`, {
+            method: 'DELETE'
+        }).then(resp => resp.json())
+    }
+
+    static patchAnnouncement = (id, announcement) => {
+        return fetch(`http://localhost:3002/api/v1/announcements/${id}`, {
+            method: 'PATCH',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(announcement)
         }).then(resp => resp.json())

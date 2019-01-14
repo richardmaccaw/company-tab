@@ -52,6 +52,15 @@ class App extends Component {
       .then(data => this.setState({serverUser: data, announcements: data.announcements}))
   }
 
+  addAnnouncement = (announcement) => {
+    this.setState({announcements: [announcement, ...this.state.announcements]})
+  }
+
+  deleteAnnouncement = (id) => {
+    const announcements = this.state.announcements.filter(announcement => announcement.id !== id)
+    this.setState({announcements})
+  }
+
   render() {
     const { isSignedIn, announcements } = this.state
     return (
@@ -82,6 +91,8 @@ class App extends Component {
                 serverUser={this.state.serverUser}
                 isSignedIn={isSignedIn}
                 announcements={announcements}
+                addAnnouncement={this.addAnnouncement}
+                deleteAnnouncement={this.deleteAnnouncement}
                 {...routerProps}
               />
             } 
