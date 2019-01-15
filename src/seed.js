@@ -37,16 +37,7 @@ const times = {
         location: 'Madrid',
         time: moment().tz('Europe/Madrid').format('h:mma'),
         id: 3
-    }, {
-        location: 'Madrid',
-        time: moment().tz('Europe/Madrid').format('h:mma'),
-        id: 4
-    }, {
-        location: 'Madrid',
-        time: moment().tz('Europe/Madrid').format('h:mma'),
-        id: 5
     }]
-
 }
 
 const linkList = {
