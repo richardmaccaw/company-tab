@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardActions, Button, Grid, Switch, FormControlLabel, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core'
+import moment from 'moment-timezone';
 
 class AnnouncementCard extends React.Component {
 
@@ -37,7 +38,7 @@ class AnnouncementCard extends React.Component {
                 <div className='announcementCard'>
                         <h1>{announcement.title}</h1>
                         <p>{announcement.description}</p>
-                        <p>{announcement.date}</p>
+                        <p>{moment(announcement.date).fromNow()}</p>
                     <CardActions>
                         <FormControlLabel
                             control={<Switch color='primary' checked={announcement.published}></Switch>}

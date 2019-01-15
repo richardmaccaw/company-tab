@@ -7,7 +7,6 @@ import Announcements from './routes/Announcements'
 import Settings from './routes/Settings'
 import './App.css';
 
-
 import firebase from 'firebase'
 import { Route, Switch, Redirect } from "react-router-dom"
 
@@ -15,7 +14,10 @@ import { Route, Switch, Redirect } from "react-router-dom"
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "companytab-227916.firebaseapp.com",
+  databaseURL: "https://companytab-227916.firebaseio.com",
   projectId: "companytab-227916",
+  storageBucket: "companytab-227916.appspot.com",
+  messagingSenderId: "1092020664287"
 }
 
 firebase.initializeApp(config);
@@ -30,12 +32,16 @@ class App extends Component {
   }
 
   componentDidMount = () => {
-   this.authUser().then(firebaseUser => {
-     this.setState({firebaseUser, isSignedIn: true})
-    }).then(
-      this.findOrCreateUser
-      
-    )
+    this.authenticateUser()
+  }
+
+  authenticateUser = () => {
+    this.authUser().then(firebaseUser => {
+      this.setState({
+        firebaseUser,
+        isSignedIn: !!firebaseUser
+      })
+    }).then(this.findOrCreateUser)
   }
 
   authUser = () => {
@@ -50,11 +56,13 @@ class App extends Component {
     })
   }
 
+
   findOrCreateUser = () => {
+    const { displayName, uid, email } = this.state.firebaseUser
     const user = {
-      name: this.state.firebaseUser.displayName,
-      uid: this.state.firebaseUser.uid,
-      domain: this.state.firebaseUser.email.replace(/.*@/, "")
+      name: displayName,
+      uid: uid,
+      domain: email.replace(/.*@/, "")
     }
     API.findOrCreateUser(user)
       .then(data => data && this.setState({serverUser: data, announcements: data.announcements}))
@@ -81,22 +89,23 @@ class App extends Component {
 
   render() {
     const { isSignedIn, announcements } = this.state
+    const { authenticateUser } = this
     return (
       <div className="App">
         {isSignedIn && <Nav></Nav>}
         <Switch>
           <Route
             exact path='/'
-            render={renderProps => !isSignedIn ? 
-              (<LandingPage {...renderProps}/>)
+            render={renderProps => isSignedIn ? 
+              <Redirect to='/home'/>
               : 
-                (<Redirect to={{pathname: '/home'}}/>)
+              <LandingPage { ...renderProps} authenticateUser={authenticateUser} />
             }
           />
           
           <Route 
             exact path='/home'
-            component={routerProps =>
+            render={routerProps =>
               <Home 
                 announcements={announcements}
                 isSignedIn={isSignedIn}
@@ -104,7 +113,7 @@ class App extends Component {
           />
           <Route 
             path='/announcements' 
-            component={routerProps => 
+            render={routerProps => 
               <Announcements 
                 serverUser={this.state.serverUser}
                 isSignedIn={isSignedIn}
@@ -118,7 +127,7 @@ class App extends Component {
           />
           <Route 
             path='/settings'
-            component={routerProps => 
+            render={routerProps => 
               <Settings 
                 isSignedIn={isSignedIn}
                 {...routerProps}
