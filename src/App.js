@@ -34,6 +34,7 @@ class App extends Component {
      this.setState({firebaseUser, isSignedIn: true})
     }).then(
       this.findOrCreateUser
+      
     )
   }
 
