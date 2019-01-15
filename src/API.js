@@ -5,17 +5,12 @@ class API {
         this.announcementsURL = 'http://localhost:3002/api/v1/announcements'
     }
 
-    static find_or_create_user (uid, user) {
-        return fetch(`/api/v1/users/find_or_create_user/${uid}`, {
+    static findOrCreateUser = (user) => {
+        return fetch('http://localhost:3002/api/v1/users', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(user)
         }).then(resp => resp.json())
-    }
-
-    static getUser (uid) {
-        return fetch(`http://localhost:3002/api/v1/users/${uid}`)
-            .then(resp => resp.json())
     }
 
     static postAnnouncement = (announcement) => {
@@ -33,7 +28,6 @@ class API {
     }
 
     static patchAnnouncement = (announcement) => {
-        console.log(announcement)
         return fetch(`http://localhost:3002/api/v1/announcements/${announcement.id}`, {
             method: 'PATCH',
             headers: {'Content-Type': 'application/json'},

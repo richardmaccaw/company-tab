@@ -32,7 +32,9 @@ class App extends Component {
   componentDidMount = () => {
    this.authUser().then(firebaseUser => {
      this.setState({firebaseUser, isSignedIn: true})
-    }).then(this.getUser)
+    }).then(
+      this.findOrCreateUser
+    )
   }
 
   authUser = () => {
@@ -47,8 +49,13 @@ class App extends Component {
     })
   }
 
-  getUser = () => {
-    API.getUser(this.state.firebaseUser.uid)
+  findOrCreateUser = () => {
+    const user = {
+      name: this.state.firebaseUser.displayName,
+      uid: this.state.firebaseUser.uid,
+      domain: this.state.firebaseUser.email.replace(/.*@/, "")
+    }
+    API.findOrCreateUser(user)
       .then(data => data && this.setState({serverUser: data, announcements: data.announcements}))
   }
 
