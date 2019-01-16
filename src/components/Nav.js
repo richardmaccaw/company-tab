@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 import { withStyles } from '@material-ui/core/styles'
 import { Avatar, Button } from '@material-ui/core'
@@ -24,11 +24,18 @@ const styles = {
         width: 50,
         height: 50
   },
-
 };
 
 
 class Nav extends React.Component {
+    
+    signOut = () => {
+        firebase.auth().signOut()
+            .then((resp) => {
+                window.location.replace('/')
+            } )
+    }
+    
     render () {
         const { classes } = this.props
         return (
@@ -40,16 +47,15 @@ class Nav extends React.Component {
                         <NavLink to ='/announcements' exact style={link} activeStyle={{color: 'purple'}}>announcements</NavLink>
                         <NavLink to ='/settings' exact style={link} activeStyle={{color: 'purple'}}>settings</NavLink>
                     </div>
-                    <div className='navButton'>
+                    <div className='signOut'>
                         <Avatar 
                             alt="profile picture" 
                             src={firebase.auth().currentUser.photoURL} 
                             className={classes.bigAvatar}>
                         </Avatar>
+                        <Button onClick={this.signOut}
+                        >sign out</Button>
                     </div>
-                    <div className='navLinks' >
-                        <button onClick={() => firebase.auth().signOut()}>Sign out</button>
-                    </div> 
                 </div>
                     
             </div>
@@ -57,4 +63,4 @@ class Nav extends React.Component {
     }
 }
 
-export default withStyles(styles)(Nav)
+export default withRouter(withStyles(styles)(Nav))

@@ -5,9 +5,33 @@
 
 .container {
   display: flex;
+  justify-content: center;
 }
 
+.hero {
+  margin-top: 10%;
+  display: flex;
+  flex-direction: column;
+}
 
+.chip {
+  max-width: 30px;
+  font-weight: bold;
+  font-size: 11px;
+  border: 0.1px solid rgba(167, 1, 167, 0.521);
+  padding: 2px;
+  border-radius: 15%;
+  display: flex;
+  justify-content: center;
+  color: rgba(128, 0, 128, 0.699);
+  background-color: rgba(167, 1, 167, 0.233);
+}
+
+.hero_item {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
 
 .nav {
   display: flex;
@@ -16,15 +40,23 @@
   padding-bottom: 5%;
 }
 
+.signOut{
+  display: flex;
+  align-items: center;
+}
+
+.signOut a {
+  text-decoration: none;
+  color: grey;
+}
+
 .navLinks {
   display: flex;
 }
 
-
 .navLinks a {
-  color: grey;
+  padding-right: 10px;
   text-decoration: none;
-  margin-right: 20px;
 }
 
 .navButton {

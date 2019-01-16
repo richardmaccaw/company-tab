@@ -1,5 +1,6 @@
 import React from 'react'
 import { CardActions, Button, Grid, Switch, FormControlLabel, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@material-ui/core'
+import moment from 'moment-timezone';
 
 class AnnouncementCard extends React.Component {
 
@@ -7,6 +8,7 @@ class AnnouncementCard extends React.Component {
         checked: false,
         dialogOpen: false,
         title: this.props.announcement.title,
+        published: this.props.announcement.published,
         description: this.props.announcement.description
     }
 
@@ -20,13 +22,24 @@ class AnnouncementCard extends React.Component {
         })
     }
 
+    togglePublish = () => {
+        this.setState({
+            published: !this.state.published
+        }, () => this.editAnnouncement())
+        
+    }
+
     editAnnouncement = () => {
         const announcement = {
             title: this.state.title,
             description: this.state.description,
+            published: this.state.published,
             id: this.props.announcement.id
         }
         this.props.handleEdit(announcement)
+        if (this.state.dialogOpen) {
+            this.toggleDialog()
+        }
     }
 
     render () {
@@ -37,11 +50,17 @@ class AnnouncementCard extends React.Component {
                 <div className='announcementCard'>
                         <h1>{announcement.title}</h1>
                         <p>{announcement.description}</p>
-                        <p>{announcement.date}</p>
+                        <p>{moment(announcement.date).fromNow()}</p>
                     <CardActions>
                         <FormControlLabel
-                            control={<Switch color='primary' checked={announcement.published}></Switch>}
-                            label={announcement.published ? 'Published' : 'Not published'}
+                            control={
+                                <Switch 
+                                    color='primary'
+                                    checked={this.state.published}
+                                    onChange={this.togglePublish}
+                                    />
+                                }
+                            label={this.state.published ? 'Published' : 'Not published'}
                         />
                         <Button onClick={this.toggleDialog} variant="outlined" size="small" color="primary">Edit</Button>
                         <Button onClick={() => handleDelete(announcement.id)} variant="outlined" size="small" color="secondary">Delete</Button>
