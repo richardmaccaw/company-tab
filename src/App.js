@@ -56,7 +56,6 @@ class App extends Component {
     })
   }
 
-
   findOrCreateUser = () => {
     const { displayName, uid, email } = this.state.firebaseUser
     const user = {
@@ -65,7 +64,14 @@ class App extends Component {
       domain: email.replace(/.*@/, "")
     }
     API.findOrCreateUser(user)
-      .then(data => data && this.setState({serverUser: data, announcements: data.announcements}))
+      .then(serverUser => serverUser && 
+        this.setState(
+          {
+            serverUser,
+            announcements: serverUser.announcements.sort((a,b) => b.id - a.id)
+          }
+        )
+      )
   }
 
   addAnnouncement = (announcement) => {
@@ -77,12 +83,15 @@ class App extends Component {
     this.setState({announcements})
   }
 
+
   editAnnouncement = (editedAnnouncement) => {
     const announcements = this.state.announcements.map(announcement =>
       announcement.id === editedAnnouncement.id 
       ? {...announcement, 
           title: editedAnnouncement.title,
-          description: editedAnnouncement.description}
+          description: editedAnnouncement.description,
+          published: editedAnnouncement.published
+        }
       : announcement)
       this.setState({announcements})
   }
