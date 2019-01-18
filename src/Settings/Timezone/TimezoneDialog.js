@@ -1,19 +1,10 @@
 import React from 'react';
 
 import tzs from './Timezones'
-import API from '../../API'
 
-import Button from '@material-ui/core/Button';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, InputLabel, TextField, MenuItem, FormControl, Select } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import InputLabel from '@material-ui/core/InputLabel';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+
 
 const styles = theme => ({
     container: {
