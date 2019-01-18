@@ -28,7 +28,8 @@ class App extends Component {
     isSignedIn: false,
     firebaseUser: [],
     serverUser: [],
-    announcements: []
+    announcements: [],
+    links: []
   }
 
   componentDidMount = () => {
@@ -68,7 +69,8 @@ class App extends Component {
         this.setState(
           {
             serverUser,
-            announcements: serverUser.announcements.sort((a,b) => b.id - a.id)
+            announcements: serverUser.announcements.sort((a,b) => b.id - a.id),
+            links: serverUser.links
           }
         )
       )
@@ -96,9 +98,30 @@ class App extends Component {
       this.setState({announcements})
   }
 
+  addLink = (link) => {
+    this.setState({links: [link, ...this.state.links]})
+  }
+
+  editLink = (editedLink) => {
+    const links = this.state.links.map(link =>
+      link.id === editedLink.id ?
+      { ...link,
+        name: editedLink.name,
+        url: editedLink.url,
+      } :
+      link)
+    this.setState({
+      links
+    })
+  }
+
+  deleteLink = (id) => {
+    const links = this.state.links.slice().filter(link => link.id !== id)
+    this.setState({links})
+  }
+
   render() {
-    const { isSignedIn, announcements } = this.state
-    const { authenticateUser } = this
+    const { isSignedIn, announcements, serverUser, links } = this.state
     return (
       <div className="App">
         {isSignedIn && <Nav></Nav>}
@@ -106,25 +129,23 @@ class App extends Component {
           <Route
             exact path='/'
             render={renderProps => isSignedIn ? 
-              <Redirect to='/home'/>
-              : 
-              <LandingPage { ...renderProps} authenticateUser={authenticateUser} />
+              <Redirect to='/home'/> : <LandingPage { ...renderProps} authenticateUser={this.authenticateUser} />
             }
           />
-          
           <Route 
             exact path='/home'
             render={routerProps =>
               <Home 
+                links={links}
                 announcements={announcements}
                 isSignedIn={isSignedIn}
                 {...routerProps}/>}
           />
           <Route 
-            path='/announcements' 
+            exact path='/announcements' 
             render={routerProps => 
               <Announcements 
-                serverUser={this.state.serverUser}
+                serverUser={serverUser}
                 isSignedIn={isSignedIn}
                 announcements={announcements}
                 addAnnouncement={this.addAnnouncement}
@@ -135,9 +156,14 @@ class App extends Component {
             } 
           />
           <Route 
-            path='/settings'
+            exact path='/settings'
             render={routerProps => 
               <Settings 
+                serverUser={serverUser}
+                addLink={this.addLink}
+                editLink={this.editLink}
+                deleteLink={this.deleteLink}
+                links={links}
                 isSignedIn={isSignedIn}
                 {...routerProps}
               />

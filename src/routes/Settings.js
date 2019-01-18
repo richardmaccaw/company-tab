@@ -1,15 +1,13 @@
 import React from 'react'
-import LinksList from '../Settings/LinksList'
-import TimezoneList from '../Settings/TimezoneList'
+import LinksList from '../Settings/Links/LinksList'
+import TimezoneList from '../Settings/Timezone/TimezoneList'
 
-import { linkList, times } from '../seed'
+import { times } from '../seed'
 
 import { Grid } from '@material-ui/core';
 
 class Settings extends React.Component {
-    state = {
-    }
-
+   
     componentDidMount () {
         const { isSignedIn, history } = this.props
         if (!isSignedIn) {
@@ -24,7 +22,13 @@ class Settings extends React.Component {
                     <TimezoneList times={times.timezones}></TimezoneList>
                 </Grid>
                 <Grid item >
-                    <LinksList links={linkList.links}></LinksList>
+                    <LinksList 
+                        serverUser={this.props.serverUser}
+                        addLink={this.props.addLink}
+                        editLink={this.props.editLink}
+                        links={this.props.links}
+                        deleteLink={this.props.deleteLink}
+                    />
                 </Grid>
             </Grid>
         )

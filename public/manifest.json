@@ -3,7 +3,7 @@
 
   "name": "Company Tab",
   "description": "Spread information easily",
-  "version": "1.01",
+  "version": "1.1",
 
   "chrome_url_overrides" : {
     "newtab": "newtab.html"
@@ -18,9 +18,5 @@
     "identity"
   ],
 
-  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com object-src 'self'",
-  "key": ""
-
-
-
+  "content_security_policy": "script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com object-src 'self'"
 }

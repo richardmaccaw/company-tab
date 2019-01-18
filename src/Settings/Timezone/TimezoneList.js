@@ -1,6 +1,6 @@
 import React from 'react'
 
-import TimezoneCard from '../Settings/TimezoneCard'
+import TimezoneCard from './TimezoneCard'
 import { Grid, Button } from '@material-ui/core';
 
 

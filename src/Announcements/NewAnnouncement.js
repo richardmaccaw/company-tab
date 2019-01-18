@@ -31,12 +31,15 @@ class NewAnnouncement extends React.Component {
         const announcement = {
             title,
             description,
-            published: true,
+            published: false,
             date: moment().format(),
             company_id: serverUser.company.id
         }
         API.postAnnouncement(announcement).then(
-            (resp) => addAnnouncement(resp)
+            (resp) => {
+                addAnnouncement(resp)
+                this.props.toggleDialog()
+            }
         )
     }
     

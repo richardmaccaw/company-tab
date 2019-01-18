@@ -69,3 +69,21 @@
   color: '#444444';
 }
 
+.HomeLinksList {
+  display: flex;
+  flex-direction: column;
+}
+
+.linkItem {
+  display: flex;
+  align-items: center;
+  margin: 5px 0px;
+}
+
+.linkItem a {
+  color: #182433;
+  text-decoration: none;
+  padding: 5px;
+}
+
+

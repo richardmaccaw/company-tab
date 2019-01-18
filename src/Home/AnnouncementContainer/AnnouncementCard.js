@@ -3,12 +3,6 @@ import moment from 'moment-timezone';
 
 import { Grid } from '@material-ui/core';
 
-const style={
-    chip: {
-        backgroundColor: '#ffffff'
-    }
-}
-
 const AnnouncementCard = (props) => {
 
 
