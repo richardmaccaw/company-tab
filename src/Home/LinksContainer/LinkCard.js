@@ -6,7 +6,6 @@ const LinkCard = (props) => {
     const clearbitOpt = '?size=40&greyscale=true'
 
     return (
-
         <div >
             {props.link.url &&
                 <div className='linkItem'>

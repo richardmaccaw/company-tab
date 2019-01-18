@@ -1,10 +1,9 @@
 import React from 'react';
 import TimezoneCard from './TimezoneCard'
-import { times } from '../../seed'
 
 const TimezoneList = (props) => {
     return(
-        times.timezones.map(time => <TimezoneCard time={time}></TimezoneCard>)
+        props.timezones.map(timezone => <TimezoneCard key={timezone.key} timezone={timezone}></TimezoneCard>)
     )
 }
 

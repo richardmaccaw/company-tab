@@ -39,7 +39,7 @@ class LinksCard extends React.Component {
 
     handleDelete = () => {
         API.deleteLink(this.props.link.id)
-            .then(resp => this.props.deleteLink(resp.id))
+            .then(resp => this.props.deleteStateItem('links', resp.id))
     }
 
     render () {
