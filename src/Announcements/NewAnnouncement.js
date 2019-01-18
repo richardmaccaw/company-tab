@@ -27,7 +27,7 @@ class NewAnnouncement extends React.Component {
 
     postAnnouncement = () => {
         const { title, description } = this.state
-        const { serverUser, addAnnouncement } = this.props
+        const { serverUser, addStateItem } = this.props
         const announcement = {
             title,
             description,
@@ -37,7 +37,7 @@ class NewAnnouncement extends React.Component {
         }
         API.postAnnouncement(announcement).then(
             (resp) => {
-                addAnnouncement(resp)
+                addStateItem('announcements', resp)
                 this.props.toggleDialog()
             }
         )

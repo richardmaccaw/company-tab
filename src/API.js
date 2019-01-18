@@ -56,6 +56,31 @@ class API {
         }).then(resp => resp.json())
     }
 
+    static postTimezone = (timezone) => {
+        return fetch('http://localhost:3002/api/v1/timezones', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(timezone)
+        }).then(resp => resp.json())
+    }
+
+    static patchTimezone = (timezone) => {
+        return fetch(`http://localhost:3002/api/v1/timezones/${timezone.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(timezone)
+        }).then(resp => resp.json())
+    }
+
+    static deleteTimezone = (id) => {
+        return fetch(`http://localhost:3002/api/v1/timezones/${id}`, {
+            method: 'DELETE'
+        }).then(resp => resp.json())
+    }
 }
 
 export default API

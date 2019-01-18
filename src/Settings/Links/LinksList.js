@@ -33,14 +33,14 @@ class LinksList extends React.Component {
             company_id: this.props.serverUser.company.id
         }
         API.postLink(link)
-            .then(resp => this.props.addLink(resp))
+            .then(resp => this.props.addStateItem('links', resp))
             .then(this.toggleDialog)
     }
 
     render () {
 
         const { showDialog, name, url } = this.state
-        const { addLink, editLink, deleteLink, links } = this.props
+        const { addLink, editLink, deleteStateItem, links } = this.props
 
         return (
             <>
@@ -52,7 +52,7 @@ class LinksList extends React.Component {
                                 link={link}
                                 addLink={addLink}
                                 editLink={editLink}
-                                deleteLink={deleteLink}
+                                deleteStateItem={deleteStateItem}
                             />
                         )}
                 </Grid>

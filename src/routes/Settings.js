@@ -2,8 +2,6 @@ import React from 'react'
 import LinksList from '../Settings/Links/LinksList'
 import TimezoneList from '../Settings/Timezone/TimezoneList'
 
-import { times } from '../seed'
-
 import { Grid } from '@material-ui/core';
 
 class Settings extends React.Component {
@@ -19,13 +17,19 @@ class Settings extends React.Component {
         return (
             <Grid container justify="space-between" direction='column' spacing={24}>
                 <Grid item>
-                    <TimezoneList times={times.timezones}></TimezoneList>
+                    <TimezoneList
+                        editTimezone={this.props.editTimezone}
+                        addStateItem={this.props.addStateItem}
+                        deleteStateItem={this.props.deleteStateItem}
+                        timezones={this.props.timezones}
+                        serverUser={this.props.serverUser}
+                    />
                 </Grid>
                 <Grid item >
                     <LinksList 
                         serverUser={this.props.serverUser}
-                        addLink={this.props.addLink}
-                        editLink={this.props.editLink}
+                        addStateItem={this.props.addStateItem}
+                        deleteStateItem={this.props.deleteStateItem}
                         links={this.props.links}
                         deleteLink={this.props.deleteLink}
                     />

@@ -16,7 +16,7 @@ class Home extends React.Component {
     }
 
     render () {
-        const { announcements, links } = this.props
+        const { announcements, links, timezones } = this.props
         return <>
             <Grid 
                 container
@@ -29,7 +29,7 @@ class Home extends React.Component {
                 <Grid item xs={2} >
                     <Grid spacing={32} container direction='column'>
                         <Grid item>
-                            <TimezoneList></TimezoneList>
+                            <TimezoneList timezones={timezones}></TimezoneList>
                         </Grid>
                         <Grid item>
                             <LinksList links={links}></LinksList>

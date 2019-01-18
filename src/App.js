@@ -29,7 +29,8 @@ class App extends Component {
     firebaseUser: [],
     serverUser: [],
     announcements: [],
-    links: []
+    links: [],
+    timezones: [],
   }
 
   componentDidMount = () => {
@@ -70,21 +71,26 @@ class App extends Component {
           {
             serverUser,
             announcements: serverUser.announcements.sort((a,b) => b.id - a.id),
-            links: serverUser.links
+            links: serverUser.links,
+            timezones: serverUser.timezones
           }
         )
       )
   }
 
-  addAnnouncement = (announcement) => {
-    this.setState({announcements: [announcement, ...this.state.announcements]})
+
+  addStateItem = (type, item) => {
+    this.setState({
+      [type]: [item, ...this.state[type]]
+    })
   }
 
-  deleteAnnouncement = (id) => {
-    const announcements = this.state.announcements.slice().filter(announcement => announcement.id !== id)
-    this.setState({announcements})
+  deleteStateItem = (type, id) => {
+    const newType = this.state[type].slice().filter(item => item.id !== id)
+    this.setState({
+      [type]: newType
+    })
   }
-
 
   editAnnouncement = (editedAnnouncement) => {
     const announcements = this.state.announcements.map(announcement =>
@@ -96,10 +102,6 @@ class App extends Component {
         }
       : announcement)
       this.setState({announcements})
-  }
-
-  addLink = (link) => {
-    this.setState({links: [link, ...this.state.links]})
   }
 
   editLink = (editedLink) => {
@@ -115,13 +117,20 @@ class App extends Component {
     })
   }
 
-  deleteLink = (id) => {
-    const links = this.state.links.slice().filter(link => link.id !== id)
-    this.setState({links})
+  editTimezone = (editedTimezone) => {
+    const timezones = this.state.timezones.map(timezone =>
+      timezone.id === editedTimezone.id ? { ...timezone,
+        name: editedTimezone.name,
+        zone: editedTimezone.zone,
+      } :
+      timezone)
+    this.setState({
+      timezones
+    })
   }
 
   render() {
-    const { isSignedIn, announcements, serverUser, links } = this.state
+    const { isSignedIn, announcements, serverUser, links, timezones } = this.state
     return (
       <div className="App">
         {isSignedIn && <Nav></Nav>}
@@ -136,6 +145,7 @@ class App extends Component {
             exact path='/home'
             render={routerProps =>
               <Home 
+                timezones={timezones}
                 links={links}
                 announcements={announcements}
                 isSignedIn={isSignedIn}
@@ -148,8 +158,8 @@ class App extends Component {
                 serverUser={serverUser}
                 isSignedIn={isSignedIn}
                 announcements={announcements}
-                addAnnouncement={this.addAnnouncement}
-                deleteAnnouncement={this.deleteAnnouncement}
+                addStateItem={this.addStateItem}
+                deleteStateItem={this.deleteStateItem}
                 editAnnouncement={this.editAnnouncement}
                 {...routerProps}
               />
@@ -159,17 +169,19 @@ class App extends Component {
             exact path='/settings'
             render={routerProps => 
               <Settings 
+                addStateItem={this.addStateItem}
+                deleteStateItem={this.deleteStateItem}
                 serverUser={serverUser}
-                addLink={this.addLink}
+                editTimezone={this.editTimezone}
                 editLink={this.editLink}
-                deleteLink={this.deleteLink}
+                timezones={timezones}
                 links={links}
                 isSignedIn={isSignedIn}
                 {...routerProps}
               />
             } 
           />
-          <Route component={() => <h1>404 - page not found</h1>} />
+          <Route component={() => <h1>How did you break this?! - 404 page not found</h1>} />
         </Switch>
       </div>
     )

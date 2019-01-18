@@ -1,11 +1,14 @@
 import React from 'react'
+import moment from 'moment-timezone';
+
 
 const TimezoneCard = (props) => {
     return (
         <div>
-            {props.time && 
+            
+            {props.timezone && 
                 <>
-                    <p> {props.time.location} {props.time.time} </p>
+                    <p> {props.timezone.name} {moment().tz(props.timezone.zone).format('h:mma')} </p>
                 </>
             }
         </div>
@@ -13,3 +16,4 @@ const TimezoneCard = (props) => {
 }
 
 export default TimezoneCard
+

@@ -24,7 +24,7 @@ class Announcements extends React.Component {
 
     destroyAnnouncement = (id) => {
         API.deleteAnnouncement(id).then(
-            (resp) => this.props.deleteAnnouncement(id)
+            (resp) => this.props.deleteStateItem('announcements', resp.id)
         )
     }
 
@@ -41,7 +41,7 @@ class Announcements extends React.Component {
                 <Button onClick={this.toggleDialog} variant='contained' color='primary'>New Announcement</Button>
                 {this.state.dialogOpen && 
                     <NewAnnouncement 
-                        addAnnouncement={this.props.addAnnouncement}
+                        addStateItem={this.props.addStateItem}
                         toggleDialog={this.toggleDialog}
                         serverUser={this.props.serverUser}
                     ></NewAnnouncement>}
