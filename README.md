@@ -9,10 +9,16 @@ As companies grow in size, it becomes increasingly difficult to spread informati
 ### Screenshots
 New tab page
 ![](public/CompanyTab.png)
+
+
 Edit announcements page
 ![](public/CompanyTabAnnouncements.png)
+
+
 Edit links and timezones page
 ![](public/CompanyTabSettings.png)
+
+
 #### Tech
 * React frontend
 * Material-ui for styling
