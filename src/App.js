@@ -7,7 +7,7 @@ import Announcements from './routes/Announcements'
 import Settings from './routes/Settings'
 import './App.css';
 
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 import { Route, Switch, Redirect } from "react-router-dom"
 
 

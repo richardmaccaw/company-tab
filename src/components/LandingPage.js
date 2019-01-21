@@ -6,7 +6,7 @@ import companyTabLogo from './companyTabLogo.png'
 
 
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
-import firebase from 'firebase'
+import firebase from 'firebase/app'
 
 
 const LandingPage = (props) => {
@@ -26,7 +26,7 @@ const LandingPage = (props) => {
         <>
         <div className='logoContainer'>
             <img className='logo_item' src={companyTabLogo} width='40' height='40'></img>
-            <Typography classNAme='logo_item' variant='body2'>CompanyTab</Typography>
+            <Typography className='logo_item' variant='body2'>CompanyTab</Typography>
         </div>
         <div className="container">
             <div className="hero">
