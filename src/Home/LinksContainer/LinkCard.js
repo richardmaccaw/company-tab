@@ -3,10 +3,10 @@ import React from 'react'
 const LinkCard = (props) => {
 
     const clearbitBase = 'https://logo.clearbit.com/'
-    const clearbitOpt = '?size=40&greyscale=true'
+    const clearbitOpt = '?size=40'
 
     return (
-        <div >
+        <div className='linkContainer'>
             {props.link.url &&
                 <div className='linkItem'>
                     <a href={`https://${props.link.url}`}>

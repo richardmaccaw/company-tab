@@ -40,7 +40,7 @@ class TimezoneList extends React.Component {
         return (
             <>
                 <Button onClick={this.toggleDialog} variant='contained' color='primary'>New Timezone</Button>
-                <Grid container spacing={8} justify="space-between">
+                <Grid container spacing={8}>
                         {this.props.timezones
                             .map(timezone => 
                                 <TimezoneCard 

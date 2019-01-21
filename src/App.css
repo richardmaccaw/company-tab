@@ -1,17 +1,38 @@
 .App {
   max-width: 80%;
   margin: auto;
+  color: #182433;
 }
 
 .container {
   display: flex;
   justify-content: center;
+  
 }
 
 .hero {
-  margin-top: 10%;
+  margin-top: 1em;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.hero_item {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo_item {
+  margin: 1em;
 }
 
 .chip {
@@ -27,17 +48,12 @@
   background-color: rgba(167, 1, 167, 0.233);
 }
 
-.hero_item {
-  display: flex;
-  justify-content: center;
-  margin: 20px;
-}
-
 .nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 5%;
+  padding-top: 1em;
+  margin-bottom: 2em;
 }
 
 .signOut{
@@ -63,6 +79,7 @@
   display: flex;
 }
 
+
 .announcementCard {
   text-align: left;
   margin-bottom: 50px;
@@ -74,16 +91,42 @@
   flex-direction: column;
 }
 
+.linkContainer {
+  background-color: #ffffff;
+  margin-bottom: 0.5em;
+  border: rgb(241, 241, 241) solid 1px;
+  border-radius: 0.2em;
+}
+
 .linkItem {
   display: flex;
   align-items: center;
-  margin: 5px 0px;
+  margin: 0.3em 0em 0.3em 0.em;
 }
 
 .linkItem a {
   color: #182433;
   text-decoration: none;
   padding: 5px;
+  font-size: 0.9em;
+}
+
+.timezoneContainer {
+  background-color: #ffffff;
+  margin-bottom: 0.5em;
+  border: rgb(241, 241, 241) solid 1px;
+  border-radius: 0.2em;
+}
+
+.timezoneItem {
+  color: #182433;
+  text-decoration: none;
+  padding: 0.5em 1em;
+  font-size: 0.9em;
+}
+
+.timezoneList {
+  margin-top: 2em;
 }
 
 

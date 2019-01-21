@@ -45,7 +45,7 @@ class LinksList extends React.Component {
         return (
             <>
                 <Button onClick={this.toggleDialog} variant='contained' color='primary'>New Link</Button>
-                <Grid container spacing={8} justify="space-between">
+                <Grid container spacing={8}>
                         {links.map(link => 
                             <LinksCard 
                                 key={link.id}
