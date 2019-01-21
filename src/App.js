@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from './API'
 import Nav from './components/Nav'
-import Home from './routes/Home'
+import Home from './routes/home'
 import LandingPage from './components/LandingPage'
 import Announcements from './routes/Announcements'
 import Settings from './routes/Settings'
