@@ -1,7 +1,7 @@
 class API {
 
     static init () {
-        this.baseUrl = 'http://localhost:3002/api/v1'
+        this.baseUrl = 'https://companytab-api.herokuapp.com/api/v1'
         this.usersUrl = this.baseUrl + '/users'
         this.announcementsUrl = this.baseUrl + '/announcements'
         this.linksUrl = this.baseUrl + '/links'
