@@ -5,24 +5,27 @@ CompanyTab makes it simple to spread information to your employees. It's a chrom
 
 You can see a live demo [here](https://companytab.herokuapp.com/)
 
+![](public/readme_img/CompanyTab.png)
+
 #### Problem
-As companies grow in size, it becomes increasingly difficult to spread information around. Announcments disappear in Slack feeds or in email inboxes. Employees get more disconnected. CompanyTab is a simple tool to take over your employees new tab page and highlight the latest company announcements.
+As companies grow in size, it becomes increasingly difficult to spread information around. Announcments disappear in Slack feeds or in email inboxes. Employees get more disconnected. 
 
-### Screenshots
-New tab page
-![](public/CompanyTab.png)
-
-
-Edit announcements page
-![](public/CompanyTabAnnouncements.png)
-
-
-Edit links and timezones page
-![](public/CompanyTabSettings.png)
-
+#### Solution
+CompanyTab is a simple tool to take over your employees new tab page and highlight the latest company announcements.
 
 #### Tech
-* React frontend
-* Material-ui for styling
-* Firebase and Google OAuth for authentication
-* Ruby on Rails backend
+* React frontend, Material-ui for styling, Firebase and Google OAuth for authentication, Ruby on Rails backend.
+
+#### User Story
+As a user I want to...
+* Read the most important company information in an unobtrusive, quick and simple way.
+* Have access to links to useful company information.
+* See the local timezones across our companies offices.
+
+As an admin I want to...
+* Have full control to create, edit, delete and unpublish announcements
+* Have the announcements I make immediatly available to employees via their new tab.
+* CRUD timezones and company links
+* Make sure that no other companies have access to my company announcements.
+
+## Wireframes and component planning
