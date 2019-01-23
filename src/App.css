@@ -26,14 +26,28 @@
   padding: 1em;
 }
 
-.logoContainer {
+.lpNavContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lpLogo {
   display: flex;
   align-items: center;
 }
 
-.logo_item {
-  margin: 1em;
+.lpLogo img {
+  padding-right: 0.5em;
 }
+
+#lpButton {
+  margin: 2em;
+  padding: 1em;
+  background-color: #744FC6;
+  color: rgb(241, 234, 255);
+}
+
 
 .chip {
   max-width: 30px;

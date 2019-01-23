@@ -24,6 +24,7 @@ firebase.initializeApp(config);
 
 class App extends Component {
 
+
   state = {
     isSignedIn: false,
     firebaseUser: [],
