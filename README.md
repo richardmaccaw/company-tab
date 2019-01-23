@@ -32,3 +32,5 @@ As an admin I want to...
 ![](public/readme_img/wireframe1.png)
 ![](public/readme_img/wireframe2.png)
 
+## Database and endpoint planning
+![](public/readme_img/endpoints.png)
