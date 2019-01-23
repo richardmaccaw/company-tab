@@ -17,12 +17,12 @@ CompanyTab is a simple tool to take over your employees new tab page and highlig
 * React frontend, Material-ui for styling, Firebase and Google OAuth for authentication, Ruby on Rails backend.
 
 #### User Story
-As a user I want to...
+As an employee I want to...
 * Read the most important company information in an unobtrusive, quick and simple way.
 * Have access to links to useful company information.
 * See the local timezones across our companies offices.
 
-As an admin I want to...
+As an employer I want to...
 * Have full control to create, edit, delete and unpublish announcements
 * Have the announcements I make immediatly available to employees via their new tab.
 * CRUD timezones and company links
