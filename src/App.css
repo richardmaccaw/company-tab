@@ -50,6 +50,7 @@
 
 .nav {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   padding-top: 1em;
@@ -64,10 +65,6 @@
 .signOut a {
   text-decoration: none;
   color: grey;
-}
-
-.signOut img {
-
 }
 
 .navLinks {
@@ -142,11 +139,4 @@
 
 .timezoneList {
   margin-top: 2em;
-}
-
-
-@media screen and (max-width: 510px) {
-  .signOut img {
-    display: none;
-  }
 }
