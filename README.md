@@ -5,6 +5,8 @@ CompanyTab makes it simple to spread information to your employees. It's a chrom
 
 You can see a live demo [here](https://companytab.herokuapp.com/)
 
+![](public/readme_img/CompanyTab.png)
+
 #### Problem
 As companies grow in size, it becomes increasingly difficult to spread information around. Announcments disappear in Slack feeds or in email inboxes. Employees get more disconnected. 
 
@@ -13,8 +15,6 @@ CompanyTab is a simple tool to take over your employees new tab page and highlig
 
 #### Tech
 * React frontend, Material-ui for styling, Firebase and Google OAuth for authentication, Ruby on Rails backend.
-
-![](public/readme_img/CompanyTab.png)
 
 #### User Story
 As a user I want to...
