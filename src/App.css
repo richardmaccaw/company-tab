@@ -26,6 +26,10 @@
   padding: 1em;
 }
 
+.hero_h2 {
+  max-width: 50em;
+}
+
 .lpNavContainer {
   display: flex;
   align-items: center;
