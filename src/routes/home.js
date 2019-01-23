@@ -23,7 +23,7 @@ class Home extends React.Component {
                 justify="space-between"
             >
                 <Grid item xs={12} sm={8}>
-                    <AnnouncementList announcements={announcements}></AnnouncementList>
+                    <AnnouncementList announcements={announcements.length > 0 ? announcements : Home.defaultProps.default}></AnnouncementList>
                 </Grid>
                 <Grid item xs={2} >
                     <Grid spacing={32} container direction='column'>
@@ -38,5 +38,15 @@ class Home extends React.Component {
             </Grid>
         </>
     }
+}
+
+Home.defaultProps = {
+    default: [
+        {
+            title: 'Welcome to CompanyTab! 🥳',
+            description: 'This is your home tab where your live announcements, links and timezones are listed. Announcements will be displayed across the CompanyTab chrome extension to all your employees. Head over to announcements or settings to get started.',
+            published: true
+        }
+    ]
 }
 export default Home
