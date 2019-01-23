@@ -2,7 +2,7 @@ import React from 'react'
 import LinksDialog from './LinksDialog'
 import API from '../../API'
 
-import { CardActions, Button, Grid } from '@material-ui/core'
+import { CardActions, Button, Grid, Typography } from '@material-ui/core'
 
 class LinksCard extends React.Component {
     state = {
@@ -45,7 +45,7 @@ class LinksCard extends React.Component {
         return (
             <>
                 <Grid item md={3}>
-                    <div>
+                    <div className='linksCardItem'>
                         <h2>{link.name}</h2>
                         <p>{link.url}</p>
                         <CardActions>

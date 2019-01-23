@@ -20,10 +20,9 @@ class Home extends React.Component {
         return <>
             <Grid 
                 container
-                direction="row"
                 justify="space-between"
             >
-                <Grid item xs={8}>
+                <Grid item xs={12} sm={8}>
                     <AnnouncementList announcements={announcements}></AnnouncementList>
                 </Grid>
                 <Grid item xs={2} >

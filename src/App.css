@@ -66,6 +66,10 @@
   color: grey;
 }
 
+.signOut img {
+
+}
+
 .navLinks {
   display: flex;
 }
@@ -77,6 +81,10 @@
 
 .navButton {
   display: flex;
+}
+
+.linksCardItem {
+  overflow-wrap: break-word;
 }
 
 
@@ -92,6 +100,8 @@
 }
 
 .linkContainer {
+  min-width: 150px;
+  min-height: 45px;
   background-color: #ffffff;
   margin-bottom: 0.5em;
   border: rgb(241, 241, 241) solid 1px;
@@ -100,6 +110,7 @@
 
 .linkItem {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
   margin: 0.3em 0em 0.3em 0.em;
 }
@@ -112,6 +123,8 @@
 }
 
 .timezoneContainer {
+  overflow-wrap: break-word;
+  min-width: 150px;
   background-color: #ffffff;
   margin-bottom: 0.5em;
   border: rgb(241, 241, 241) solid 1px;
@@ -119,6 +132,8 @@
 }
 
 .timezoneItem {
+  display: flex;
+  justify-content: flex-start;
   color: #182433;
   text-decoration: none;
   padding: 0.5em 1em;
@@ -130,3 +145,8 @@
 }
 
 
+@media screen and (max-width: 510px) {
+  .signOut img {
+    display: none;
+  }
+}
