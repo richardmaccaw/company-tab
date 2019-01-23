@@ -29,3 +29,6 @@ As an admin I want to...
 * Make sure that no other companies have access to my company announcements.
 
 ## Wireframes and component planning
+![](public/readme_img/wireframe1.png)
+![](public/readme_img/wireframe2.png)
+
