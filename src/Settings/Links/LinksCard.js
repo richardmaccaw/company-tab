@@ -23,10 +23,6 @@ class LinksCard extends React.Component {
         })
     }
 
-    handleSubmit = () => {
-        this.patchLink()
-    }
-
     patchLink = () => {
         const link = {
             name: this.state.name,
@@ -35,6 +31,7 @@ class LinksCard extends React.Component {
         }
         API.patchLink(link)
             .then(resp => this.props.editLink(resp))
+            .then(this.toggleDialog)
     }
 
     handleDelete = () => {
@@ -61,7 +58,7 @@ class LinksCard extends React.Component {
                     dialogTitle={'Edit link'}
                     showDialog={showDialog}
                     handleChange={this.handleChange}
-                    handleSubmit={this.handleSubmit}
+                    handleSubmit={this.patchLink}
                     toggleDialog={this.toggleDialog}
                     name={name}
                     url={url}

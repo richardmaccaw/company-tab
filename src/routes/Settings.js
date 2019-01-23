@@ -29,6 +29,7 @@ class Settings extends React.Component {
                     <LinksList 
                         serverUser={this.props.serverUser}
                         addStateItem={this.props.addStateItem}
+                        editLink={this.props.editLink}
                         deleteStateItem={this.props.deleteStateItem}
                         links={this.props.links}
                         deleteLink={this.props.deleteLink}
