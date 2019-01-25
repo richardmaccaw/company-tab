@@ -26,7 +26,7 @@ As an employer I want to...
 * Have full control to create, edit, delete and unpublish announcements
 * Have the announcements I make immediatly available to employees via their new tab.
 * CRUD timezones and company links
-* Make sure that no other companies have access to my company announcements.
+* Make sure that no other companies have access to my companies announcements.
 
 ## Wireframes and component planning
 ![](public/readme_img/wireframe1.png)
