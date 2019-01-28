@@ -1,7 +1,7 @@
 ## CompanyTab
 
 
-CompanyTab makes it simple to spread information to your employees. It's a chrome extension and web app that shows company announcements, quick links and timezones. Once you've installed the chrome extension and logged in with your work gmail address, every new tab will show important company information.
+CompanyTab makes it simple to spread information to your employees. It's a chrome extension and web app that shows company announcements, quick links and timezones. Once you've installed the chrome extension and logged in with your work gmail address, every new tab will show important company information. A new company will start without any announcements, so the new tab will be blank. Log into to the [webapp](https://companytab.herokuapp.com/) first, create an announcement and then see it propogate across all your employees new tabs.
 
 You can see a live demo [here](https://companytab.herokuapp.com/)
 
