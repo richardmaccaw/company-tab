@@ -34,3 +34,4 @@ As an employer I want to...
 
 ## Database and endpoint planning
 ![](public/readme_img/endpoints.png)
+![](public/readme_img/database.jpeg)
